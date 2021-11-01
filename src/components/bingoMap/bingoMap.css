@@ -1,0 +1,50 @@
+.bingo-container {
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  border: 1px solid #121212;
+  padding: 10px;
+  background-color: #ebebeb;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.grid-container::before {
+  content: "";
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+.grid-container > .grid:first-child {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+.grid-container > .grid {
+  background-color: white;
+  border: 1px #ebebeb solid;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container > .grid:not(.selected):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.grid-container > .grid.selected {
+  text-decoration: line-through;
+  background-color: #e1f9ff;
+}
+
+.grid-container > .grid.selected.bingo {
+  text-decoration: line-through;
+  background-color: lightgoldenrodyellow;
+}
